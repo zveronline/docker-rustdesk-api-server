@@ -4,7 +4,7 @@ WORKDIR /rustdesk-api-server
 ADD https://github.com/kingmo888/rustdesk-api-server/archive/refs/heads/master.zip /rustdesk-api-server.zip
 
 RUN apk add --no-cache -U unzip \
-    && unzip /rustdesk-api-server.zip && rm /rustdesk-api-server.zip
+    && unzip /rustdesk-api-server.zip && rm /rustdesk-api-server.zip && mv rustdesk-api-server-*/* /rustdesk-api-server/
 
 RUN set -ex \
     && pip install --no-cache-dir --disable-pip-version-check -r requirements.txt \
