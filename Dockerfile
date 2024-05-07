@@ -6,6 +6,11 @@ ADD https://github.com/kingmo888/rustdesk-api-server/archive/refs/heads/master.z
 RUN apk add --no-cache -U unzip \
     && unzip /rustdesk-api-server.zip && rm /rustdesk-api-server.zip && mv rustdesk-api-server-*/* /rustdesk-api-server/
 
+RUN apk add musl-dev mariadb-connector-c-dev gcc mariadb-dev && \
+    pip install mysqlclient && \
+    pip cache purge && \
+    apk del --rdepends --purge musl-dev gcc
+
 RUN set -ex \
     && pip install --no-cache-dir --disable-pip-version-check -r requirements.txt \
     && rm -rf /var/cache/apk/* \
