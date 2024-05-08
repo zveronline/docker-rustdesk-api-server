@@ -34,6 +34,7 @@ jobs:
           MAINTAINER=${{ github.repository_owner }}
           BRANCH=${{ github.ref_name }}
           SOURCE_COMMIT=${{ github.sha }}
+          TAG=latest
         context: .
         platforms: |
           linux/amd64
